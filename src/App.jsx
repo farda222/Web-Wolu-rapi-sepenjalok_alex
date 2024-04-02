@@ -9,13 +9,12 @@ import Classdetail from "./Pages/Teacher-Page/Detailclasspage";
 import DetailTask from "./Pages/Teacher-Page/Detailtask";
 import Poinpageteacher from "./Pages/Teacher-Page/PointPage";
 import Quizpage from "./Pages/Teacher-Page/QuizPage";
-import Addquiz from "./Pages/Teacher-Page/Addquizpage";
-import Quizupload from "./Pages/Teacher-Page/Quizuploadedpage";
 import Quizdetail from "./Pages/Teacher-Page/Quizdetailpage";
 import Memberpage from "./Pages/Teacher-Page/Memberpage";
 import Forum from "./Pages/Teacher-Page/Forumpage";
 import Teacherprofile from "./Pages/Teacher-Page/Accountteacher";
 import Calendar from "./Pages/Teacher-Page/Calendar";
+import Classdetailstudent from "./Pages/Student-Page/Detailclasstudentpage";
 function App() {
   return (
     <Router>
@@ -29,13 +28,12 @@ function App() {
         <Route path="/Detailtask" element={<DetailTask />}></Route>
         <Route path="/Point" element={<Poinpageteacher />}></Route>
         <Route path="/Quizpage" element={<Quizpage />}></Route>
-        <Route path="/Addquiz" element={<Addquiz />}></Route>
-        <Route path="/Quizupload" element={<Quizupload />}></Route>
         <Route path="/Quizdetail" element={<Quizdetail />}></Route>
         <Route path="/Memberpage" element={<Memberpage />}></Route>
         <Route path="/Forum" element={<Forum />}></Route>
         <Route path="/Profileteacher" element={<Teacherprofile />}></Route>
         <Route path="/Calendar" element={<Calendar />}></Route>
+        <Route path="/Detailclassstudent" element={<Classdetailstudent />}></Route>
       </Routes>
     </Router>
   );

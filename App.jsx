@@ -7,6 +7,7 @@ import Teacher from "./Pages/Teacher-Page/Teacherpage";
 import Student from "./Pages/Student-Page/Studentpage";
 import Classdetail from "./Pages/Teacher-Page/Detailclasspage";
 import DetailTask from "./Pages/Teacher-Page/Detailtask";
+import DetailTaskstudent from "./Pages/Student-Page/Detailtaskstudentpage";
 import Poinpageteacher from "./Pages/Teacher-Page/PointPage";
 import Quizpage from "./Pages/Teacher-Page/QuizPage";
 import Quizdetail from "./Pages/Teacher-Page/Quizdetailpage";
@@ -26,6 +27,7 @@ function App() {
         <Route path="/StudentPage" element={<Student />}></Route>
         <Route path="/Yourclass" element={<Classdetail />}></Route>
         <Route path="/Detailtask" element={<DetailTask />}></Route>
+        <Route path="/Detailtaskstudent" element={<DetailTaskstudent />}></Route>
         <Route path="/Point" element={<Poinpageteacher />}></Route>
         <Route path="/Quizpage" element={<Quizpage />}></Route>
         <Route path="/Quizdetail" element={<Quizdetail />}></Route>

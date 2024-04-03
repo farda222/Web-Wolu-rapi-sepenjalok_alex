@@ -3,9 +3,11 @@ import { useState } from "react";
 import Iconaccount from "../../assets/img/Account.jpg";
 import Navbar from "../../Components/teacher/NavbarUtama";
 import Icontask from "../../assets/img/Icontask.svg";
+import { useNavigate } from "react-router-dom";
 
 const Detail = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
   return (
     <div className="font-Jakarta">
       <Navbar />
@@ -17,9 +19,7 @@ const Detail = () => {
             </a>
           </li>
           <li className="mr-2">
-            <a className="text-black hover:text-indigo-600 hover:border-b-4 hover:border-indigo-600 w-56 font-semibold transition-all">
-              Quiz
-            </a>
+            <a className="text-black hover:text-indigo-600 hover:border-b-4 hover:border-indigo-600 w-56 font-semibold transition-all">Quiz</a>
           </li>
           <li className="mr-2">
             <a href="#" className="text-black hover:text-indigo-600 hover:border-b-4 hover:border-indigo-600 w-56 font-semibold transition-all">
@@ -27,9 +27,7 @@ const Detail = () => {
             </a>
           </li>
           <li>
-            <a className="text-black hover:text-indigo-600 hover:border-b-4 hover:border-indigo-600 w-56 font-semibold transition-all">
-              Forum
-            </a>
+            <a className="text-black hover:text-indigo-600 hover:border-b-4 hover:border-indigo-600 w-56 font-semibold transition-all">Forum</a>
           </li>
         </ul>
       </nav>
@@ -70,20 +68,22 @@ const Detail = () => {
         </div>
       </div>
       <div className="border rounded-lg p-4 mb-4 flex w-[23rem] items-center align-middle container mx-auto lg:w-[40rem] 2xl:w-[50rem] mt-10">
-          <div className="mr-4 lg:mr-7">
-            <img src={Icontask} alt="Task Icon" /> {/* Menampilkan gambar */}
+        <div className="mr-4 lg:mr-7">
+          <img src={Icontask} alt="Task Icon" /> {/* Menampilkan gambar */}
+        </div>
+        <div className="lg:mt-3">
+          <div className="mb-2">
+            <a onClick={() => navigate("/DetailTaskstudent")} target="_blank" rel="noopener noreferrer">
+              English task lessons 1
+            </a>
           </div>
-          <div className="lg:mt-3">
-            <div className="mb-2">
-              <a target="_blank" rel="noopener noreferrer">
-                English task lessons 1
-              </a>
-            </div>
-            <div className="flex justify-between mb-2">
-              <div className="text-xs">04-april-2024 - <span className="text-red-500 font-semibold">Deadline </span> 04-april-2024</div>
+          <div className="flex justify-between mb-2">
+            <div className="text-xs">
+              04-april-2024 - <span className="text-red-500 font-semibold">Deadline </span> 04-april-2024
             </div>
           </div>
         </div>
+      </div>
     </div>
   );
 };

@@ -7,10 +7,20 @@ import Pdf from "../../assets/img/Convert_PDF_2.svg";
 import Link from "../../assets/img/Link_Chain.svg";
 import Delete from '../../assets/img/Delete.svg';
 import { useNavigate } from "react-router-dom";
+import Image from '../../assets/img/Image_2.svg'
 
 const Detailtask = () => {
   const navigate = useNavigate();
   const [selectedFiles, setSelectedFiles] = useState([]);
+
+  // Icon mappings for different file types
+  const iconMapping = {
+    'pdf': Pdf,
+    'jpg': Image,
+    'jpeg': Image,
+    'png': Image,
+    'mp4': Link,
+  };
 
   // Function to handle file selection
   const handleFileSelect = (event) => {
@@ -30,6 +40,14 @@ const Detailtask = () => {
   // Function to handle file removal
   const removeSelectedFile = (index) => {
     setSelectedFiles((prevFiles) => prevFiles.filter((file, i) => i !== index));
+  };
+
+  // Function to shorten filename if longer than 10 characters
+  const shortenFilename = (filename) => {
+    if (filename.length > 10) {
+      return filename.substring(0, 20) + '...';
+    }
+    return filename;
   };
 
   return (
@@ -57,7 +75,7 @@ const Detailtask = () => {
       </div>
       <div className="border-[1px] border-neutral-300 w-fit h-fit rounded-[8.87px] flex mx-auto container align-middle items-center justify-center gap-4 mt-4 lg:w-[30rem] lg:h-fit">
         <div className="p-6 px-7 bg-neutral-300 lg:w-28 lg:-ml-28">
-          <img className="w-5 lg:w-5 lg:flex lg:mx-auto lg:align-middle lg:items-center lg:justify-center lg:container" src={Pdf} alt="PDF Icon" />
+          <img className="w-6 lg:w-8 lg:flex lg:mx-auto lg:align-middle lg:items-center lg:justify-center lg:container" src={Pdf} alt="PDF Icon" />
         </div>
         <h1 className="mr-3 text-xs px-5 lg:text-sm">Click to download the file task</h1>
       </div>
@@ -76,8 +94,11 @@ const Detailtask = () => {
         </div>
         <div className="w-72 h-[0.1rem] bg-neutral-300 mt-8 justify-center align-middle items-center container mx-auto flex"></div>
         {selectedFiles.map((file, index) => (
-          <div key={index} className="flex justify-center items-center mt-2 mb-2">
-            <p className="text-sm mr-2">{file.name}</p>
+          <div key={index} className="flex items-center justify-between mt-3 mb-3 gap-10 w-full px-12">
+            <div className="flex items-center">
+              <img src={iconMapping[file.name.split('.').pop()]} alt="File Icon" className="mr-2" />
+              <p className="text-sm mr-2">{shortenFilename(file.name)}</p>
+            </div>
             <button onClick={() => removeSelectedFile(index)} className="text-black text-xs mt-1 font-extrabold">
               <img src={Delete} alt="Delete Icon" />
             </button>

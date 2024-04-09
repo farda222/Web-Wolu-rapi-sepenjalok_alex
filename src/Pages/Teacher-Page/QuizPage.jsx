@@ -2,7 +2,7 @@ import Quizcomponent from "../../Components/teacher/Quizcomponent";
 
 const QuizPage = () => {
   return (
-    <div>
+    <div className="block">
       <Quizcomponent />
     </div>
   );

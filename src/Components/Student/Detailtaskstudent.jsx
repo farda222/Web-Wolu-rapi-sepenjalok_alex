@@ -5,9 +5,9 @@ import Back from "../../assets/img/mingcute_left-line.svg";
 import Cardimage from "../../assets/img/Gambar-card.svg";
 import Pdf from "../../assets/img/Convert_PDF_2.svg";
 import Link from "../../assets/img/Link_Chain.svg";
-import Delete from '../../assets/img/Delete.svg';
+import Delete from "../../assets/img/Delete.svg";
 import { useNavigate } from "react-router-dom";
-import Image from '../../assets/img/Image_2.svg'
+import Image from "../../assets/img/Image_2.svg";
 
 const Detailtask = () => {
   const navigate = useNavigate();
@@ -15,11 +15,11 @@ const Detailtask = () => {
 
   // Icon mappings for different file types
   const iconMapping = {
-    'pdf': Pdf,
-    'jpg': Image,
-    'jpeg': Image,
-    'png': Image,
-    'mp4': Link,
+    pdf: Pdf,
+    jpg: Image,
+    jpeg: Image,
+    png: Image,
+    mp4: Link,
   };
 
   // Function to handle file selection
@@ -45,7 +45,7 @@ const Detailtask = () => {
   // Function to shorten filename if longer than 10 characters
   const shortenFilename = (filename) => {
     if (filename.length > 10) {
-      return filename.substring(0, 20) + '...';
+      return filename.substring(0, 20) + "...";
     }
     return filename;
   };
@@ -87,16 +87,16 @@ const Detailtask = () => {
           https://www.adidas.com...
         </a>
       </div>
-      <div className="w-full h-full bg-white rounded-tl-2xl rounded-t-2xl shadow shadow-black flex-col justify-start items-center inline-flex mt-20 py-10">
-        <div className="flex gap-24 justify-center align-middle items-center container mx-auto">
+      <div className="w-full h-full bg-white rounded-tl-2xl rounded-t-2xl shadow shadow-black flex-col justify-start items-center inline-flex mt-20 py-10 lg:rounded-none">
+        <div className="flex gap-24 justify-center align-middle items-center container mx-auto mt-16">
           <h1 className="text-sm font-semibold">Answer Collection Place</h1>
           <p className="text-xs mt-1 text-neutral-500">Assignment</p>
         </div>
         <div className="w-72 h-[0.1rem] bg-neutral-300 mt-8 justify-center align-middle items-center container mx-auto flex"></div>
         {selectedFiles.map((file, index) => (
-          <div key={index} className="flex items-center justify-between mt-3 mb-3 gap-10 w-full px-12">
+          <div key={index} className="flex items-center justify-between mt-3 mb-3 gap-10 w-full px-12 lg:px-[30rem]">
             <div className="flex items-center">
-              <img src={iconMapping[file.name.split('.').pop()]} alt="File Icon" className="mr-2" />
+              <img src={iconMapping[file.name.split(".").pop()]} alt="File Icon" className="mr-2" />
               <p className="text-sm mr-2">{shortenFilename(file.name)}</p>
             </div>
             <button onClick={() => removeSelectedFile(index)} className="text-black text-xs mt-1 font-extrabold">
@@ -105,17 +105,17 @@ const Detailtask = () => {
           </div>
         ))}
         <div className="w-80 h-[0.1rem] bg-neutral-200 justify-center align-middle items-center container mx-auto flex"></div>
-        <div className="w-[318px] h-[38.37px] px-[121.45px] py-[11.19px] bg-indigo-600 rounded-[3.20px] justify-center align-middle items-center container mx-auto gap-2 inline-flex mt-7">
-          <label htmlFor="file-upload" className="text-white text-xs font-medium font-['Plus Jakarta Sans'] cursor-pointer">
-            Add
-          </label>
-          <input id="file-upload" type="file" accept=".pdf, .jpg, .jpeg, .png, .mp4" className="hidden" onChange={handleFileSelect} multiple />
-        </div>
+        <button
+          className="text-white bg-indigo-600 transition-all text-xs w-[318px] h-[38.37px] py-[11.19px] border-indigo-600 border-solid border-[1px] rounded-sm justify-center align-middle items-center container mx-auto flex mt-5"
+          onClick={() => document.getElementById("file-upload").click()}>
+          Add
+        </button>
         <button
           className="text-indigo-600 hover:bg-indigo-600 hover:text-white transition-all text-xs w-[318px] h-[38.37px] py-[11.19px] border-indigo-600 border-solid border-[1px] rounded-sm justify-center align-middle items-center container mx-auto flex mt-2 mb-20"
           onClick={handleFileUpload}>
           Upload
         </button>
+        <input id="file-upload" type="file" accept=".pdf, .jpg, .jpeg, .png, .mp4" className="hidden" onChange={handleFileSelect} multiple />
       </div>
     </div>
   );

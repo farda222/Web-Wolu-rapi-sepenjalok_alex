@@ -16,6 +16,7 @@ import Forum from "./Pages/Teacher-Page/Forumpage";
 import Teacherprofile from "./Pages/Teacher-Page/Accountteacher";
 import Calendar from "./Pages/Teacher-Page/Calendar";
 import Classdetailstudent from "./Pages/Student-Page/Detailclasstudentpage";
+import QuizStudent from './Pages/Student-Page/QuizStudentPage'
 function App() {
   return (
     <Router>
@@ -36,6 +37,7 @@ function App() {
         <Route path="/Profileteacher" element={<Teacherprofile />}></Route>
         <Route path="/Calendar" element={<Calendar />}></Route>
         <Route path="/Detailclassstudent" element={<Classdetailstudent />}></Route>
+        <Route path="/Quizstudent" element={<QuizStudent />}></Route>
       </Routes>
     </Router>
   );

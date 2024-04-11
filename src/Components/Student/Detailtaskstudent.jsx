@@ -88,13 +88,13 @@ const Detailtask = () => {
         </a>
       </div>
       <div className="w-full h-full bg-white rounded-tl-2xl rounded-t-2xl shadow shadow-black flex-col justify-start items-center inline-flex mt-20 py-10 lg:rounded-none">
-        <div className="flex gap-24 justify-center align-middle items-center container mx-auto mt-16">
+        <div className="flex gap-24 justify-center align-middle items-center container mx-auto mt-5 lg:mt-16">
           <h1 className="text-sm font-semibold">Answer Collection Place</h1>
           <p className="text-xs mt-1 text-neutral-500">Assignment</p>
         </div>
         <div className="w-72 h-[0.1rem] bg-neutral-300 mt-8 justify-center align-middle items-center container mx-auto flex"></div>
         {selectedFiles.map((file, index) => (
-          <div key={index} className="flex items-center justify-between mt-3 mb-3 gap-10 w-full px-12 lg:px-[30rem]">
+          <div key={index} className="flex items-center justify-between mt-3 mb-3 gap-10 w-full px-12 lg:px-[30rem] 2xl:px-[48rem]">
             <div className="flex items-center">
               <img src={iconMapping[file.name.split(".").pop()]} alt="File Icon" className="mr-2" />
               <p className="text-sm mr-2">{shortenFilename(file.name)}</p>

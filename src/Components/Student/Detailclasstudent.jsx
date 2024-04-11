@@ -19,7 +19,9 @@ const Detail = () => {
             </a>
           </li>
           <li className="mr-2">
-            <a className="text-black hover:text-indigo-600 hover:border-b-4 hover:border-indigo-600 w-56 font-semibold transition-all">Quiz</a>
+            <a onClick={() => navigate("/QuizStudent")} className="text-black hover:text-indigo-600 hover:border-b-4 hover:border-indigo-600 w-56 font-semibold transition-all">
+              Quiz
+            </a>
           </li>
           <li className="mr-2">
             <a href="#" className="text-black hover:text-indigo-600 hover:border-b-4 hover:border-indigo-600 w-56 font-semibold transition-all">
@@ -31,7 +33,7 @@ const Detail = () => {
           </li>
         </ul>
       </nav>
-      <div className="flex justify-center align-middle items-center mx-auto container gap-6 mt-7 ml-1 font-Jakarta lg:mt-24 2xl:mt-32">
+      <div className="flex justify-center align-middle items-center mx-auto container gap-6 mt-7 ml-1 font-Jakarta lg:mt-28 2xl:mt-32">
         <h1 className="text-black font-semibold text-2xl lg:text-3xl 2xl:ml-60">English XI PPLG 1</h1>
         <button className="text-white bg-indigo-600 w-16 h-7  font-semibold rounded-md text-xs lg:ml-[30rem] lg:w-20 lg:h-9 2xl:ml-[55rem]">Share</button>
         <div className="relative flex-row -ml-4">
@@ -67,7 +69,7 @@ const Detail = () => {
           <img className="w-7  h-7 rounded-full " src={Iconaccount}></img>
         </div>
       </div>
-      <div className="border rounded-lg p-4 mb-4 flex w-[23rem] items-center align-middle container mx-auto lg:w-[40rem] 2xl:w-[50rem] mt-10">
+      <div className="border rounded-lg p-4 mb-4 flex w-[23rem] items-center align-middle container mx-auto lg:w-[28rem] 2xl:w-[35rem] mt-10">
         <div className="mr-4 lg:mr-7">
           <img src={Icontask} alt="Task Icon" /> {/* Menampilkan gambar */}
         </div>

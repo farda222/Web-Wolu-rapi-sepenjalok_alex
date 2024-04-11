@@ -4,13 +4,14 @@ import Navbar from "./NavbarUtama";
 import Iconaccount from "../../assets/img/Account.jpg";
 import Noquiz from "../../assets/img/Noquiz.svg";
 import Penicon from "../../assets/img/Pen.svg";
+import Icon from "../../assets/img/Iconquiz.svg";
 
 const QuizComponent = () => {
   const navigate = useNavigate();
   const [deadline, setDeadline] = useState("");
   const [timer, setTimer] = useState("");
   const [questions, setQuestions] = useState([]);
-  const [uploadedQuestions, setUploadedQuestions] = useState([]);
+  const [uploadedQuizzes, setUploadedQuizzes] = useState([]);
   const [showOverlay, setShowOverlay] = useState(false);
 
   const handleDeadlineChange = (e) => {
@@ -26,9 +27,9 @@ const QuizComponent = () => {
   };
 
   const handleUploadQuiz = () => {
-    const uploadedQuiz = questions.map((questionId) => ({
+    const uploadedQuestions = questions.map((questionId) => ({
       id: questionId,
-      question: document.getElementById(`question${questionId}`).value,
+      title: document.getElementById(`question${questionId}`).value,
       options: {
         A: document.getElementById(`optionA${questionId}`).value,
         B: document.getElementById(`optionB${questionId}`).value,
@@ -36,8 +37,19 @@ const QuizComponent = () => {
         D: document.getElementById(`optionD${questionId}`).value,
       },
     }));
-    setUploadedQuestions(uploadedQuiz);
+
+    const newQuiz = {
+      id: uploadedQuizzes.length + 1,
+      questions: uploadedQuestions,
+      deadline: deadline,
+      timer: timer,
+    };
+
+    setUploadedQuizzes([...uploadedQuizzes, newQuiz]);
     setShowOverlay(false);
+    setQuestions([]);
+    setDeadline("");
+    setTimer("");
   };
 
   return (
@@ -90,9 +102,29 @@ const QuizComponent = () => {
             </div>
           </div>
 
-          <div id="Halmanutama" className={`flex justify-center mx-auto container align-middle items-center mt-20`}>
-            <img className="lg:w-60 2xl:w-72" src={Noquiz} alt="No Quiz" />
-          </div>
+          {uploadedQuizzes.map((quiz) => (
+            <div key={quiz.id}>
+              <div className="mx-auto container mt-6 justify-center align-middle items-center lg:ml-[26.5rem] 2xl:ml-[42.5rem]">
+                <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 mx-5 lg:mx-2">
+                  <div className="bg-white p-4 rounded-md shadow-md border-2 border-neutral-300 flex">
+                    <img src={Icon}></img>
+                    <div>
+                      <h3 className="text-lg font-semibold mt-[0.20rem] ml-4">English Listening - Quiz</h3>
+                      <p className="ml-4 text-sm">{quiz.deadline} - <span className="text-red-500 font-semibold">Ready!</span></p>
+                    </div>
+                    <p className="ml-4 hidden">{quiz.questions.length} questions</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+
+          {uploadedQuizzes.length === 0 && (
+            <div className="flex justify-center mx-auto container align-middle items-center mt-20">
+              <img className="lg:w-60 2xl:w-72" src={Noquiz} alt="No Quiz" />
+            </div>
+          )}
+
           <div className="flex mx-auto justify-center align-middle items-center container mt-10 mb-10">
             <button className="bg-indigo-600 text-white px-6 py-2 text-sm rounded-sm text-center" onClick={() => setShowOverlay(true)}>
               Add Quiz
@@ -101,37 +133,17 @@ const QuizComponent = () => {
         </div>
       </div>
 
-      {uploadedQuestions.length > 0 && (
-        <div className="mx-auto container mt-6">
-          <h2 className="text-xl font-semibold mb-3">Uploaded Questions:</h2>
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-            {uploadedQuestions.map((question) => (
-              <div key={question.id} className="bg-white p-4 rounded-md shadow-md">
-                <h3 className="text-lg font-semibold mb-2">{question.question}</h3>
-                <ul>
-                  {Object.entries(question.options).map(([key, value]) => (
-                    <li key={key} className="ml-4">
-                      <strong>{key}: </strong> {value}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
-
       {showOverlay && (
         <div className="overlay-wrapper">
           <div className="font-Jakarta absolute top-0 left-0 w-full h-full bg-white" style={{ zIndex: 9999 }}>
             <div className="flex justify-center mx-auto align-middle items-center container mt-12 gap-16 lg:mt-20">
               <h1 className="text-xl font-semibold">English XI PPLG 1 - Quiz</h1>
-              <button className="text-white bg-indigo-600 px-4 py-2 font-semibold rounded-md text-xs ml-5 mr-5 lg:-mr-7 lg:ml-[35rem]">Share</button>
+              <button className="text-white bg-indigo-600 px-4 py-2 font-semibold rounded-md text-xs ml-5 mr-5 lg:-mr-7 lg:ml-[35rem] hidden lg:block 2xl:block">Share</button>
               <div>
                 <img src={Penicon} alt="Pen Icon" />
               </div>
             </div>
-            <div className="flex justify-center mx-auto align-middle items-center container mt-20 gap-5 px-10 ml-3">
+            <div className="flex justify-center mx-auto align-middle items-center container mt-20 gap-5 px-10 ml-3 2xl:ml-48 2xl:gap-36">
               <div className="flex flex-col space-y-4">
                 <label htmlFor="deadline" className="text-gray-700 font-semibold text-xs">
                   Deadline:
